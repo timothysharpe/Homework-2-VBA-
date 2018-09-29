@@ -1,0 +1,31 @@
+Sub Homeworktest()
+For Each ws in Worksheets
+
+Dim tickername As String
+Dim totalstockvolume As Double
+Dim tickertablerow As Long
+Dim lastrow As Long
+
+ws.Range("i1") = "Ticker"
+ws.Range("j1") = "Total Stock Volume"
+
+tickertablerow = 2
+
+lastrow = ws.Cells(Rows.Count, "A").End(x1Up).Row
+
+For i = 2 To lastrow
+
+If ws.Cells(i + 1, 1).Value <> ws.Cells(i, 1).Value Then
+
+totalstockvolume = totalstockvolume + ws.Cells(i, 7).Value
+tickername = ws.Cells(i, 1).Value
+
+ws.Range("i" & tickertablerow).Value = tickername
+ws.("j" & tickertablerow).Value = totalstockvolume
+
+tickertablerow = tickertablerow + 1
+
+End IfNext i1
+Next ws
+
+End Sub
